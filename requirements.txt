@@ -1,0 +1,7 @@
+aiohttp
+asyncio
+azure-identity
+html2text
+requests
+semantic-kernel
+typing

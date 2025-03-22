@@ -1,0 +1,15 @@
+[project]
+name = "cyber-ai-gor"
+version = "0.1.0"
+description = "An Agentic AI Cyber Threat Intelligence (CTI) Analyst Assistant"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.11.14",
+    "asyncio>=3.4.3",
+    "azure-identity>=1.21.0",
+    "html2text>=2024.2.26",
+    "requests>=2.32.3",
+    "semantic-kernel>=1.25.0",
+    "typing>=3.10.0.0",
+]

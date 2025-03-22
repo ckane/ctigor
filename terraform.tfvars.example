@@ -1,0 +1,4 @@
+rg_name                   = "CHANGEME"
+cognitive_account_name    = "CHANGEME"
+cognitive_deployment_name = "CHANGEME"
+azure_subscription_id     = "CHANGEME"
