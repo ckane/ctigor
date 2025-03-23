@@ -1,0 +1,9 @@
+# The same name for the Cognitive Services Deployment that you put in terraform.tfvars
+deployment = "CHANGEME"
+
+# An API key for interacting with the OpenAI deployment (is available in Terraform state)
+azure_api_key = "CHANGEME" 
+
+# Need to update "eastus2" with proper region if not using default
+# (this is also available in Terraform state)
+endpoint = "https://eastus2.api.cognitive.microsoft.com/"
