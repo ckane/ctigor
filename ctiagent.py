@@ -5,7 +5,7 @@ from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion, AzureChat
 from semantic_kernel.contents import ChatHistory
 from semantic_kernel.kernel import Kernel
 
-from ctiagent_functions import RandomNumberPlugin
+from ctiagent_functions import RandomNumberPlugin, FilePlugin, WebPlugin
 
 # Import secrets from local_settings.py
 import local_settings
@@ -28,8 +28,10 @@ class CTIgor(object):
         # Define the request settings to use model defaults
         self.request_settings = AzureChatPromptExecutionSettings(function_choice_behavior=FunctionChoiceBehavior.Auto())
 
-        # Register the RandomNumberPlugin with the kernel
+        # Register the RandomNumberPlugin, FilePlugin, WebPlugin with the kernel
         self.kernel.add_plugin(RandomNumberPlugin(), plugin_name="random_number")
+        self.kernel.add_plugin(FilePlugin(), plugin_name="file")
+        self.kernel.add_plugin(WebPlugin(), plugin_name="web")
 
     async def prompt(self, input_prompt: str):
         self.chat_history.add_user_message(input_prompt)
