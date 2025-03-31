@@ -2,6 +2,7 @@ aiohttp
 asyncio
 azure-identity
 html2text
+ollama
 requests
 semantic-kernel
 typing

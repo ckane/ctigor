@@ -9,6 +9,7 @@ dependencies = [
     "asyncio>=3.4.3",
     "azure-identity>=1.21.0",
     "html2text>=2024.2.26",
+    "ollama>=0.4.7",
     "requests>=2.32.3",
     "semantic-kernel>=1.25.0",
     "typing>=3.10.0.0",

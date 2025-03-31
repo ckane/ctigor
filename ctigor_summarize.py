@@ -1,6 +1,6 @@
 import asyncio
 from argparse import ArgumentParser
-from ctiagent import CTIgor
+from ctiagent import CTIgor, CTIgorBackend
 
 class CTIgorReportSummarizer:
     def __init__(self):
@@ -12,6 +12,8 @@ class CTIgorReportSummarizer:
         ap.add_argument('-w', '--webpage', required=False, type=str, help="URL of HTML webpage to summarize")
         ap.add_argument('-i', '--interactive', required=False, default=False, action='store_true',
                         help="Provide an interactive prompt for more analysis")
+        ap.add_argument('-o', '--ollama', required=False, default=False, action='store_true',
+                        help="Use a local Ollama instance instead of the default (Azure OpenAI)")
         return ap.parse_args()
 
     # A prompt to instruct the LLM to load an already-converted text file of a report from a file on disk
@@ -24,7 +26,10 @@ class CTIgorReportSummarizer:
 
     async def main(self):
         self.args = CTIgorReportSummarizer.argparse()
-        self.ctigor = CTIgor()
+        if self.args.ollama:
+            self.ctigor = CTIgor(backend=CTIgorBackend.OLLAMA_LOCAL)
+        else:
+            self.ctigor = CTIgor(backend=CTIgorBackend.AZURE_OPENAI)
 
         # If both -w and -f are specified, the -w takes precedence and the -f will be ignored
         if self.args.webpage:
