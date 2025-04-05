@@ -1,5 +1,7 @@
 aiohttp
 asyncio
+autogen-agentchat[agents]
+autogen-ext[azure,llama-cpp,ollama]
 azure-identity
 html2text
 ollama
