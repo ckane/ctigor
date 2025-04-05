@@ -1,6 +1,6 @@
 [project]
-name = "cyber-ai-gor"
-version = "0.1.0"
+name = "ctigor"
+version = "0.2.0"
 description = "An Agentic AI Cyber Threat Intelligence (CTI) Analyst Assistant"
 readme = "README.md"
 requires-python = ">=3.12"
