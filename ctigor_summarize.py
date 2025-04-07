@@ -1,7 +1,6 @@
 import asyncio
 from argparse import ArgumentParser
 from ctiagent import CTIgor, CTIgorBackend
-from autogen_agentchat.ui import Console as AgentConsole
 
 class CTIgorReportSummarizer:
     def __init__(self):
