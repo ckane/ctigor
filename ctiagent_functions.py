@@ -3,7 +3,6 @@ import aiohttp
 import html2text
 from random import randint
 from typing import Annotated
-from semantic_kernel.functions import kernel_function
 
 async def gen_random(
   low: Annotated[int, "Lower bound of the random number"],
