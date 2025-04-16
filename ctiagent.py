@@ -1,4 +1,5 @@
 import asyncio
+import time
 from enum import Enum
 
 from autogen_ext.models.openai import AzureOpenAIChatCompletionClient
@@ -9,6 +10,7 @@ from autogen_agentchat.ui import Console as AgentConsole
 from autogen_core.tools import FunctionTool
 from autogen_core import CancellationToken
 from autogen_ext.tools.mcp import SseServerParams, mcp_server_tools
+from openai import RateLimitError
 
 from ctiagent_functions import gen_random, load_from_web, load_text_file
 
@@ -60,7 +62,14 @@ class CTIgor(object):
 
     async def prompt(self, input_prompt: str):
         # Prompt the model with the given input + state, waiting for response
-        response = await self.agent.on_messages([TextMessage(content=input_prompt, source="user")], CancellationToken())
+        response = None
+        while response == None:
+            try:
+                response = await self.agent.on_messages([TextMessage(content=input_prompt, source="user")], CancellationToken())
+            except RateLimitError:
+                print("Encountered RateLimitError, waiting 90s")
+                time.sleep(90)
+                response = None
 
         # Ensure response isn't None
         assert response is not None
