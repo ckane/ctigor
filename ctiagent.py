@@ -8,6 +8,7 @@ from autogen_agentchat.messages import TextMessage
 from autogen_agentchat.ui import Console as AgentConsole
 from autogen_core.tools import FunctionTool
 from autogen_core import CancellationToken
+from autogen_ext.tools.mcp import SseServerParams, mcp_server_tools
 
 from ctiagent_functions import gen_random, load_from_web, load_text_file
 
@@ -20,7 +21,7 @@ class CTIgorBackend(Enum):
     OLLAMA_LOCAL = 2
 
 class CTIgor(object):
-    def __init__(self, backend=CTIgorBackend.AZURE_OPENAI):
+    def __init__(self, backend=CTIgorBackend.AZURE_OPENAI, mcp_servers=[]):
         # Define the Azure OpenAI AI Connector and connect to the deployment Terraform provisioned from main.tf
         if backend == CTIgorBackend.AZURE_OPENAI:
             self.chat_service = AzureOpenAIChatCompletionClient(
@@ -37,13 +38,23 @@ class CTIgor(object):
         else:
             raise ValueError('Invalid LLM backend specified')
 
+        self.mcp_server_urls = mcp_servers
+
+    async def init_agent(self):
+        # Initialize the MCP tools
+        await self.init_mcp()
+
+        tools=[gen_random, load_from_web, load_text_file]
+        for mcp_tool in self.mcp_tools:
+            tools.extend(mcp_tool)
+
         # Instantiate the CTI Agent
         self.agent = AssistantAgent(
             name="ctigor",
             model_client=self.chat_service,
 
             # Register the tools to use
-            tools=[gen_random, load_from_web, load_text_file],
+            tools=tools,
             reflect_on_tool_use=True,
         )
 
@@ -60,3 +71,11 @@ class CTIgor(object):
             text_response = text_response[:-9]
 
         return text_response
+
+    async def init_mcp(self):
+        self.octi_mcp_params = [
+            SseServerParams(
+                url=u
+            ) for u in self.mcp_server_urls
+        ]
+        self.mcp_tools = [await mcp_server_tools(x) for x in self.octi_mcp_params]
