@@ -14,6 +14,8 @@ class CTIgorReportSummarizer:
                         help="Provide an interactive prompt for more analysis")
         ap.add_argument('-o', '--ollama', required=False, default=False, action='store_true',
                         help="Use a local Ollama instance instead of the default (Azure OpenAI)")
+        ap.add_argument('-m', '--mcp', required=False, nargs='*', type=str,
+                        default=[], help='MCP Server URLs to register with CTIgor')
         return ap.parse_args()
 
     # A prompt to instruct the LLM to load an already-converted text file of a report from a file on disk
@@ -27,9 +29,12 @@ class CTIgorReportSummarizer:
     async def main(self):
         self.args = CTIgorReportSummarizer.argparse()
         if self.args.ollama:
-            self.ctigor = CTIgor(backend=CTIgorBackend.OLLAMA_LOCAL)
+            self.ctigor = CTIgor(backend=CTIgorBackend.OLLAMA_LOCAL, mcp_servers=self.args.mcp)
         else:
-            self.ctigor = CTIgor(backend=CTIgorBackend.AZURE_OPENAI)
+            self.ctigor = CTIgor(backend=CTIgorBackend.AZURE_OPENAI, mcp_servers=self.args.mcp)
+
+        # Initialize the CTIgor agent
+        await self.ctigor.init_agent()
 
         # If both -w and -f are specified, the -w takes precedence and the -f will be ignored
         if self.args.webpage:
