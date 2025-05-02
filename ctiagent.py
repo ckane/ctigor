@@ -12,8 +12,6 @@ from autogen_core import CancellationToken
 from autogen_ext.tools.mcp import SseServerParams, mcp_server_tools
 from openai import RateLimitError
 
-from ctiagent_functions import gen_random, load_from_web, load_text_file
-
 # Import secrets from local_settings.py
 import local_settings
 
@@ -46,7 +44,7 @@ class CTIgor(object):
         # Initialize the MCP tools
         await self.init_mcp()
 
-        tools=[gen_random, load_from_web, load_text_file]
+        tools=[]
         for mcp_tool in self.mcp_tools:
             tools.extend(mcp_tool)
 
