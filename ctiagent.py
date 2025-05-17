@@ -27,8 +27,9 @@ class CTIgor(object):
                 azure_deployment=local_settings.deployment,
                 api_key=local_settings.azure_api_key,
                 azure_endpoint=local_settings.endpoint,
-                api_version="2024-10-21",
-                model='gpt-4o-mini',
+                #api_version="2024-10-21",
+                api_version="2025-04-01-preview",
+                model='gpt-4.1-nano',
             )
         elif backend == CTIgorBackend.OLLAMA_LOCAL:
             self.chat_service = OllamaChatCompletionClient(
