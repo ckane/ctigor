@@ -1,4 +1,7 @@
 import asyncio
+import readline
+import os
+import atexit
 from argparse import ArgumentParser
 from ctiagent import CTIgor, CTIgorBackend
 
@@ -73,5 +76,14 @@ class CTIgorReportSummarizer:
                 break
 
 if __name__ == "__main__":
+    ctigor_histfile = os.path.join(os.path.expanduser("~"), ".ctigor_history")
+
+    try:
+        readline.read_history_file(ctigor_histfile)
+        readline.set_history_length(1000)
+    except:
+        pass # If loading histfile fails, just move along
+
+    atexit.register(readline.write_history_file, ctigor_histfile)
     summarizer = CTIgorReportSummarizer()
     asyncio.run(summarizer.main())
