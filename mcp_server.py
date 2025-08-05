@@ -36,7 +36,7 @@ async def gen_random(
 @mcp.tool()
 async def load_from_web(
     url: Annotated[str, "URL to read from the web into markdown content"],
-) -> Annotated[bytes, "The contents from the site, formatted as Markdown"]:
+) -> Annotated[str, "The contents from the site, formatted as Markdown"]:
     """Given a URL, convert the page to markdown text and return it as a string"""
     async with aiohttp.ClientSession() as session:
         log.info(f"Fetching url: {url}")
@@ -44,8 +44,6 @@ async def load_from_web(
         async with resphtml:
             resptxt = html2text.html2text(await resphtml.text())
             return resptxt
-
-    return None
 
 
 @mcp.tool()
