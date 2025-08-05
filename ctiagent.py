@@ -2,20 +2,18 @@ import asyncio
 import time
 from enum import Enum
 
+from typing import List, Any
+
 from autogen_ext.models.openai import AzureOpenAIChatCompletionClient
 from autogen_ext.models.ollama import OllamaChatCompletionClient
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.messages import TextMessage
 from autogen_agentchat.ui import Console as AgentConsole
-from autogen_core.tools import FunctionTool
+from autogen_core.tools import FunctionTool, BaseTool
 from autogen_core import CancellationToken
-from autogen_ext.tools.mcp import (
-    SseServerParams,
-    StreamableHttpServerParams,
-    mcp_server_tools,
-)
 from autogen_ext.memory.canvas import TextCanvasMemory
 from openai import RateLimitError
+from mcphub import MCPHub
 
 # Import secrets from local_settings.py
 import local_settings
@@ -62,11 +60,15 @@ class CTIFileReport(object):
         return self.filename
 
 
+# Declare a global MCPHub instance that'll be shared across all CTIgor
+# instances
+global_mcphub = MCPHub()
+
+
 class CTIgor(object):
     def __init__(
         self,
         backend=CTIgorBackend.AZURE_OPENAI,
-        mcp_servers=[],
         report: CTIReport | CTIWebReport | CTIFileReport = CTIReport(),
     ):
         # Define the Azure OpenAI AI Connector and connect to the deployment Terraform provisioned from main.tf
@@ -86,8 +88,6 @@ class CTIgor(object):
         else:
             raise ValueError("Invalid LLM backend specified")
 
-        self.mcp_server_urls = mcp_servers
-
         # Initialize a TextCanvasMemory to maintain text artifacts
         self.canvas = TextCanvasMemory()
 
@@ -102,11 +102,12 @@ class CTIgor(object):
 
     async def init_agent(self):
         # Initialize the MCP tools
-        await self.init_mcp()
-
         tools = []
-        for mcp_tool in self.mcp_tools:
-            tools.extend(mcp_tool)
+        for x in global_mcphub.autogen_adapter.servers_params.list_servers():
+            if x.server_name is not None:
+                tools.extend(
+                    await global_mcphub.autogen_adapter.create_adapters(x.server_name)
+                )
 
         # Add the TextCanvasMemory tools
         # tools.append(self.canvas.get_apply_patch_tool())
@@ -151,9 +152,3 @@ class CTIgor(object):
             text_response = text_response[:-9]
 
         return text_response
-
-    async def init_mcp(self):
-        self.octi_mcp_params = [
-            StreamableHttpServerParams(url=u) for u in self.mcp_server_urls
-        ]
-        self.mcp_tools = [await mcp_server_tools(x) for x in self.octi_mcp_params]

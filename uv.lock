@@ -170,11 +170,11 @@ wheels = [
 
 [[package]]
 name = "asyncio"
-version = "3.4.3"
+version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/da/54/054bafaf2c0fb8473d423743e191fcdf49b2c1fd5e9af3524efbe097bafd/asyncio-3.4.3.tar.gz", hash = "sha256:83360ff8bc97980e4ff25c964c7bd3923d333d177aa4f7fb736b019f26c7cb41", size = 204411, upload-time = "2015-03-10T14:11:26.494Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/71/ea/26c489a11f7ca862d5705db67683a7361ce11c23a7b98fc6c2deaeccede2/asyncio-4.0.0.tar.gz", hash = "sha256:570cd9e50db83bc1629152d4d0b7558d6451bb1bfd5dfc2e935d96fc2f40329b", size = 5371, upload-time = "2025-08-05T02:51:46.605Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/22/74/07679c5b9f98a7cb0fc147b1ef1cc1853bc07a4eb9cb5731e24732c5f773/asyncio-3.4.3-py3-none-any.whl", hash = "sha256:c4d18b22701821de07bd6aea8b53d21449ec0ec5680645e5317062ea21817d2d", size = 101767, upload-time = "2015-03-10T14:05:10.959Z" },
+    { url = "https://files.pythonhosted.org/packages/57/64/eff2564783bd650ca25e15938d1c5b459cda997574a510f7de69688cb0b4/asyncio-4.0.0-py3-none-any.whl", hash = "sha256:c1eddb0659231837046809e68103969b2bef8b0400d59cfa6363f6b5ed8cc88b", size = 5555, upload-time = "2025-08-05T02:51:45.767Z" },
 ]
 
 [[package]]
@@ -217,19 +217,19 @@ mcp = [
 
 [[package]]
 name = "autogen-agentchat"
-version = "0.7.1"
+version = "0.5.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "autogen-core" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f1/b6/f7dbc0ab89b1175f6215b96b219b77846dbbac0d2c0c72c0665afae69d78/autogen_agentchat-0.7.1.tar.gz", hash = "sha256:24527947bef428710a14ea599879f6cd5308670602558234c8a8670f60e196b2", size = 143039, upload-time = "2025-07-28T08:41:13.875Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2b/f4/ff5e99d496db37c8d0480245611eacdb02cacf7e4d86b8b4062e230b4dd6/autogen_agentchat-0.5.7.tar.gz", hash = "sha256:6f888f03224d658cc130548c3e42558a177a7f7f3eb59b414396c412ec282728", size = 115075, upload-time = "2025-05-14T04:25:25.082Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1e/60/cccd643af20ad5bd877a206854d85b7cbffd832928bb6b49fe0a51963365/autogen_agentchat-0.7.1-py3-none-any.whl", hash = "sha256:0eadf3a82974d6b41a6308b5625b578befb2d5bace82377e1dc930dde44f38bc", size = 117057, upload-time = "2025-07-28T08:41:12.291Z" },
+    { url = "https://files.pythonhosted.org/packages/5d/eb/01267ce3b25b363effea123bd6112613fbfa7064eb5b5f0f8c2910ee12c7/autogen_agentchat-0.5.7-py3-none-any.whl", hash = "sha256:b9c8548e02eed9765c02800182b13bd9747f1561b23df66983bedd8c5fdddb86", size = 106067, upload-time = "2025-05-14T04:25:23.483Z" },
 ]
 
 [[package]]
 name = "autogen-core"
-version = "0.7.1"
+version = "0.5.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jsonref" },
@@ -239,21 +239,21 @@ dependencies = [
     { name = "pydantic" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/95/6e/32f766c96f6e54210f149703ae4aa224bd1e5cb18c5582b89a4cf245dcfe/autogen_core-0.7.1.tar.gz", hash = "sha256:b522321a6e776c104c8605310f17381a11068f3ab63ef711d1eaf887832b23b1", size = 99831, upload-time = "2025-07-28T08:41:11.102Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7d/d6/b5f113fa000741ecedc6a0d6649ef07512f7c922da7b22958280ef225d4e/autogen_core-0.5.7.tar.gz", hash = "sha256:0e3b23b64bd2c7c3180ab4431c137104473e11a846088cc2dd629a0e1fdfbf2f", size = 2448958, upload-time = "2025-05-14T04:25:14.264Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e1/42/36081c8d59290129cf2677589266fff5e3d16a7cfe4559f65f765d56d983/autogen_core-0.7.1-py3-none-any.whl", hash = "sha256:70336f8b85acb6d2a532f8d1417be66beecf08c86976ad97db6e55a932d29446", size = 101404, upload-time = "2025-07-28T08:41:09.52Z" },
+    { url = "https://files.pythonhosted.org/packages/28/7c/84fbb7dbfd100f9f6b946a0cab3298484ba9cffbed0a07bac77604dae8c1/autogen_core-0.5.7-py3-none-any.whl", hash = "sha256:a276af987b7861092194bfd73bab49ac36f3fee55958a60b0b43ea67612d2e50", size = 96564, upload-time = "2025-05-14T04:25:12.079Z" },
 ]
 
 [[package]]
 name = "autogen-ext"
-version = "0.7.1"
+version = "0.5.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "autogen-core" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8f/81/e4af131b759bcf7869db34731fa90a530f9397b28dc363d2b9eac9ac1f71/autogen_ext-0.7.1.tar.gz", hash = "sha256:924c39f6349e05519b722b9ef5ec9cd9a408d122860058d0d5d5e2b61515d285", size = 406318, upload-time = "2025-07-28T08:41:24.646Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/5d/11/31d7c07a2e95cdf09f95c1ac4188503f2aa182a6fa127f828915143d08da/autogen_ext-0.5.7.tar.gz", hash = "sha256:987aa70d8eecd05c9dea4aad793e9d1369a3d3ceb022dfeafb4cd98b6b4869fc", size = 336325, upload-time = "2025-05-14T04:25:30.112Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c1/41/864e5e0936b9494e295d2e76b8922c236885381bb33042905a58dfa245be/autogen_ext-0.7.1-py3-none-any.whl", hash = "sha256:1b32ef0d96b9f7ca121f5f44a8e582ca638808eb91ff4d7ae3521daa85cd417f", size = 330850, upload-time = "2025-07-28T08:41:23.111Z" },
+    { url = "https://files.pythonhosted.org/packages/ae/f1/8f2cb8ee0b7942ddb504ebc5aded1369de2138570bb2d5c19309137fb27d/autogen_ext-0.5.7-py3-none-any.whl", hash = "sha256:1744195107d814621dc0e967b7f7a4fa09e063fa5ed728c3ba118e9aa88acad2", size = 296935, upload-time = "2025-05-14T04:25:28.562Z" },
 ]
 
 [package.optional-dependencies]
@@ -266,6 +266,9 @@ azure = [
 ]
 llama-cpp = [
     { name = "llama-cpp-python" },
+]
+mcp = [
+    { name = "mcp" },
 ]
 ollama = [
     { name = "ollama" },
@@ -580,6 +583,7 @@ dependencies = [
     { name = "html2text" },
     { name = "json-schema-to-pydantic" },
     { name = "mcp", extra = ["cli"] },
+    { name = "mcphub", extra = ["autogen"] },
     { name = "ollama" },
     { name = "requests" },
     { name = "semantic-kernel" },
@@ -598,6 +602,7 @@ requires-dist = [
     { name = "html2text", specifier = ">=2024.2.26" },
     { name = "json-schema-to-pydantic", specifier = ">=0.2.4" },
     { name = "mcp", extras = ["cli", "inspector"], specifier = ">=1.5.0" },
+    { name = "mcphub", extras = ["autogen"], specifier = "==0.1.11" },
     { name = "ollama", specifier = ">=0.4.7" },
     { name = "requests", specifier = ">=2.32.3" },
     { name = "semantic-kernel", specifier = ">=1.25.0" },
@@ -1149,6 +1154,26 @@ cli = [
 ]
 
 [[package]]
+name = "mcphub"
+version = "0.1.11"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "openai" },
+    { name = "psutil" },
+    { name = "pydantic" },
+    { name = "rich" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f0/08/ae92a8fca806488547f4c2c0b364e7378142b997497ad9d90cc96b79279d/mcphub-0.1.11.tar.gz", hash = "sha256:0876f784987fa6d86bb50d912cd87fc16142a373620db09d28180359295f994b", size = 99755, upload-time = "2025-05-15T15:33:44.256Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a9/b7/25293ce8df9c0c84062cbab80f42b3af3e4b3641b0cdf2fe3a22c387b8c0/mcphub-0.1.11-py3-none-any.whl", hash = "sha256:f3bb8546561c17036f9614e7a8969fb6821c153debd61f805823a0fea51388f0", size = 30943, upload-time = "2025-05-15T15:33:42.883Z" },
+]
+
+[package.optional-dependencies]
+autogen = [
+    { name = "autogen-ext", extra = ["mcp"] },
+]
+
+[[package]]
 name = "mdurl"
 version = "0.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1637,6 +1662,21 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/6c/04/98f6f8cf5b07ab1294c13f34b4e69b3722bb609c5b701d6c169828f9f8aa/protobuf-5.29.5-cp38-abi3-manylinux2014_aarch64.whl", hash = "sha256:fa18533a299d7ab6c55a238bf8629311439995f2e7eca5caaff08663606e9015", size = 319824, upload-time = "2025-05-28T23:51:47.545Z" },
     { url = "https://files.pythonhosted.org/packages/85/e4/07c80521879c2d15f321465ac24c70efe2381378c00bf5e56a0f4fbac8cd/protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl", hash = "sha256:63848923da3325e1bf7e9003d680ce6e14b07e55d0473253a690c3a8b8fd6e61", size = 319942, upload-time = "2025-05-28T23:51:49.11Z" },
     { url = "https://files.pythonhosted.org/packages/7e/cc/7e77861000a0691aeea8f4566e5d3aa716f2b1dece4a24439437e41d3d25/protobuf-5.29.5-py3-none-any.whl", hash = "sha256:6cf42630262c59b2d8de33954443d94b746c952b01434fc58a417fdbd2e84bd5", size = 172823, upload-time = "2025-05-28T23:51:58.157Z" },
+]
+
+[[package]]
+name = "psutil"
+version = "7.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/2a/80/336820c1ad9286a4ded7e845b2eccfcb27851ab8ac6abece774a6ff4d3de/psutil-7.0.0.tar.gz", hash = "sha256:7be9c3eba38beccb6495ea33afd982a44074b78f28c434a1f51cc07fd315c456", size = 497003, upload-time = "2025-02-13T21:54:07.946Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ed/e6/2d26234410f8b8abdbf891c9da62bee396583f713fb9f3325a4760875d22/psutil-7.0.0-cp36-abi3-macosx_10_9_x86_64.whl", hash = "sha256:101d71dc322e3cffd7cea0650b09b3d08b8e7c4109dd6809fe452dfd00e58b25", size = 238051, upload-time = "2025-02-13T21:54:12.36Z" },
+    { url = "https://files.pythonhosted.org/packages/04/8b/30f930733afe425e3cbfc0e1468a30a18942350c1a8816acfade80c005c4/psutil-7.0.0-cp36-abi3-macosx_11_0_arm64.whl", hash = "sha256:39db632f6bb862eeccf56660871433e111b6ea58f2caea825571951d4b6aa3da", size = 239535, upload-time = "2025-02-13T21:54:16.07Z" },
+    { url = "https://files.pythonhosted.org/packages/2a/ed/d362e84620dd22876b55389248e522338ed1bf134a5edd3b8231d7207f6d/psutil-7.0.0-cp36-abi3-manylinux_2_12_i686.manylinux2010_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:1fcee592b4c6f146991ca55919ea3d1f8926497a713ed7faaf8225e174581e91", size = 275004, upload-time = "2025-02-13T21:54:18.662Z" },
+    { url = "https://files.pythonhosted.org/packages/bf/b9/b0eb3f3cbcb734d930fdf839431606844a825b23eaf9a6ab371edac8162c/psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4b1388a4f6875d7e2aff5c4ca1cc16c545ed41dd8bb596cefea80111db353a34", size = 277986, upload-time = "2025-02-13T21:54:21.811Z" },
+    { url = "https://files.pythonhosted.org/packages/eb/a2/709e0fe2f093556c17fbafda93ac032257242cabcc7ff3369e2cb76a97aa/psutil-7.0.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a5f098451abc2828f7dc6b58d44b532b22f2088f4999a937557b603ce72b1993", size = 279544, upload-time = "2025-02-13T21:54:24.68Z" },
+    { url = "https://files.pythonhosted.org/packages/50/e6/eecf58810b9d12e6427369784efe814a1eec0f492084ce8eb8f4d89d6d61/psutil-7.0.0-cp37-abi3-win32.whl", hash = "sha256:ba3fcef7523064a6c9da440fc4d6bd07da93ac726b5733c29027d7dc95b39d99", size = 241053, upload-time = "2025-02-13T21:54:34.31Z" },
+    { url = "https://files.pythonhosted.org/packages/50/1b/6921afe68c74868b4c9fa424dad3be35b095e16687989ebbb50ce4fceb7c/psutil-7.0.0-cp37-abi3-win_amd64.whl", hash = "sha256:4cf3d4eb1aa9b348dec30105c55cd9b7d4629285735a102beb4441e38db90553", size = 244885, upload-time = "2025-02-13T21:54:37.486Z" },
 ]
 
 [[package]]

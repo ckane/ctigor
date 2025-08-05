@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "base": {
+      "package_name": "local/base",
+      "command": "uv",
+      "args": [
+        "run",
+        "python",
+        "mcp_server.py"
+      ]
+    }
+  }
+}

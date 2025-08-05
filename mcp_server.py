@@ -17,10 +17,18 @@ ap.add_argument(
     default=8001,
     help="TCP port to listen on (default 8001)",
 )
+ap.add_argument(
+    "-s",
+    "--sse",
+    required=False,
+    default=False,
+    action="store_true",
+    help="Start an SSE server (default: off)",
+)
 args = ap.parse_args()
 log = logging.getLogger(name="CTI.MCP")
 log.setLevel("INFO")
-mcp = FastMCP(name="CTI.MCP", port=args.port)
+mcp = FastMCP(name="CTI.MCP")
 
 
 @mcp.tool()
@@ -58,7 +66,10 @@ async def load_text_file(
 
 
 def main():
-    asyncio.run(mcp.run_http_async())
+    if args.sse:
+        asyncio.run(mcp.run_http_async(port=args.port))
+    else:
+        asyncio.run(mcp.run_stdio_async())
 
 
 if __name__ == "__main__":

@@ -68,13 +68,11 @@ class CTIgorReportSummarizer:
         if self.args.ollama:
             self.ctigor = CTIgor(
                 backend=CTIgorBackend.OLLAMA_LOCAL,
-                mcp_servers=self.args.mcp,
                 report=report,
             )
         else:
             self.ctigor = CTIgor(
                 backend=CTIgorBackend.AZURE_OPENAI,
-                mcp_servers=self.args.mcp,
                 report=report,
             )
 
