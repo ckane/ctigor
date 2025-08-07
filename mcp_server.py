@@ -67,9 +67,9 @@ async def load_text_file(
 
 def main():
     if args.sse:
-        asyncio.run(mcp.run_http_async(port=args.port))
+        asyncio.run(mcp.run_http_async(port=args.port, show_banner=False))
     else:
-        asyncio.run(mcp.run_stdio_async())
+        asyncio.run(mcp.run_stdio_async(show_banner=False))
 
 
 if __name__ == "__main__":
