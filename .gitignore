@@ -13,6 +13,9 @@ wheels/
 .env
 local_settings.py
 
+# Local MCP Hub configuration
+.mcphub.json
+
 # Terraform stuff that should stay out of github
 .terraform
 .terraform.lock.hcl
