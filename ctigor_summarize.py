@@ -44,15 +44,6 @@ class CTIgorReportSummarizer:
             action="store_true",
             help="Use a local Ollama instance instead of the default (Azure OpenAI)",
         )
-        ap.add_argument(
-            "-m",
-            "--mcp",
-            required=False,
-            nargs="*",
-            type=str,
-            default=[],
-            help="MCP Server URLs to register with CTIgor",
-        )
         return ap.parse_args()
 
     async def main(self):
