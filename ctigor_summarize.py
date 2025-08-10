@@ -44,6 +44,13 @@ class CTIgorReportSummarizer:
             action="store_true",
             help="Use a local Ollama instance instead of the default (Azure OpenAI)",
         )
+        ap.add_argument(
+            "--disable-memory",
+            required=False,
+            default=False,
+            action="store_true",
+            help="Disable the creation of TextCanvasMemory tools",
+        )
         return ap.parse_args()
 
     async def main(self):
@@ -60,11 +67,13 @@ class CTIgorReportSummarizer:
             self.ctigor = CTIgor(
                 backend=CTIgorBackend.OLLAMA_LOCAL,
                 report=report,
+                built_in_memory=not self.args.disable_memory,
             )
         else:
             self.ctigor = CTIgor(
                 backend=CTIgorBackend.AZURE_OPENAI,
                 report=report,
+                built_in_memory=not self.args.disable_memory,
             )
 
         await self.ctigor.init_agent()
