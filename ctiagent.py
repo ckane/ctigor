@@ -69,6 +69,7 @@ class CTIgor(object):
     def __init__(
         self,
         backend=CTIgorBackend.AZURE_OPENAI,
+        built_in_memory: bool = True,
         report: CTIReport | CTIWebReport | CTIFileReport = CTIReport(),
     ):
         # Define the Azure OpenAI AI Connector and connect to the deployment Terraform provisioned from main.tf
@@ -89,7 +90,8 @@ class CTIgor(object):
             raise ValueError("Invalid LLM backend specified")
 
         # Initialize a TextCanvasMemory to maintain text artifacts
-        self.canvas = TextCanvasMemory()
+        self.build_in_memory = built_in_memory
+        self.canvas = TextCanvasMemory() if self.build_in_memory else None
 
         # Initially load the report into the agent's context
         self.report = report
@@ -110,8 +112,9 @@ class CTIgor(object):
                 )
 
         # Add the TextCanvasMemory tools
-        # tools.append(self.canvas.get_apply_patch_tool())
-        # tools.append(self.canvas.get_update_file_tool())
+        if self.build_in_memory and self.canvas is not None:
+            tools.append(self.canvas.get_apply_patch_tool())
+            tools.append(self.canvas.get_update_file_tool())
 
         # Instantiate the CTI Agent
         self.agent = AssistantAgent(
