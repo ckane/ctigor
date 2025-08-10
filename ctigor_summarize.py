@@ -83,6 +83,7 @@ class CTIgorReportSummarizer:
             print(f"Summary of {self.ctigor.get_context_entity()}")
             print("================================")
             print(f"{self.ctigor.get_summary()}\n")
+            print("================================")
 
         if not self.args.interactive:
             # If -i was not specified, then exit early
