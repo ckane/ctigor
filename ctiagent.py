@@ -124,7 +124,7 @@ class CTIgor(object):
             tools=tools,
             reflect_on_tool_use=True,
             # Register the memory
-            memory=[self.canvas],
+            memory=[self.canvas] if self.canvas else None,
         )
 
         summarize_prompt = self.report.summarize_prompt()
