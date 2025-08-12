@@ -4,6 +4,7 @@ import os
 import atexit
 from argparse import ArgumentParser
 from ctiagent import CTIgor, CTIgorBackend, CTIReport, CTIWebReport, CTIFileReport
+from typing import Any
 
 
 class CTIgorReportSummarizer:
@@ -53,6 +54,17 @@ class CTIgorReportSummarizer:
         )
         return ap.parse_args()
 
+    async def exec_slash_cmd(self, slash_input: str) -> Any:
+        command = slash_input.lstrip("/")
+        cmdline = command.split(" ")
+
+        if len(cmdline) > 0:
+            if cmdline[0].lower() in ["quit", "exit", "bye"]:
+                raise EOFError
+
+            if cmdline[0].lower() == "files" and self.ctigor.canvas is not None:
+                return self.ctigor.canvas.canvas.list_files()
+
     async def main(self):
         self.args = CTIgorReportSummarizer.argparse()
 
@@ -92,18 +104,20 @@ class CTIgorReportSummarizer:
         # Loop forever while the user has more input
         while True:
             try:
-                # Get input from the user, display a prompt to indicate waiting on user input
-                user_prompt = input("CTIgor> ")
+                # Get input from the user, display a prompt to indicate waiting on user input.
+                # Strip whitespace.
+                user_prompt = input("CTIgor> ").strip()
 
-                # If user says 'quit' then exit
-                if user_prompt.lower() in ["quit", "exit", "bye"]:
-                    raise EOFError
-
-                # Send the user's prompt to the LLM and wait for the response
-                response = await self.ctigor.prompt(user_prompt)
+                # Clear response variable
+                response = ""
+                if len(user_prompt) >= 1 and user_prompt[0] == "/":
+                    response = await self.exec_slash_cmd(user_prompt)
+                else:
+                    # Send the user's prompt to the LLM and wait for the response
+                    response = await self.ctigor.prompt(user_prompt)
 
                 # Display response on console
-                print(f"=======\n{response}\n=======")
+                print(f"{response}\n")
             except EOFError:
                 # On EOF, exit the program gracefully
                 print("Thank you, bye!")
