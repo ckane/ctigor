@@ -155,3 +155,7 @@ class CTIgor(object):
             text_response = text_response[:-9]
 
         return text_response
+
+    async def exec_cmd(self, cmd_with_args: List[str]) -> Any:
+        if cmd_with_args[0].lower() == "files" and self.canvas is not None:
+            return self.canvas.canvas.list_files()

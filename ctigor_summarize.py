@@ -62,8 +62,7 @@ class CTIgorReportSummarizer:
             if cmdline[0].lower() in ["quit", "exit", "bye"]:
                 raise EOFError
 
-            if cmdline[0].lower() == "files" and self.ctigor.canvas is not None:
-                return self.ctigor.canvas.canvas.list_files()
+            return await self.ctigor.exec_cmd(cmd_with_args=cmdline)
 
     async def main(self):
         self.args = CTIgorReportSummarizer.argparse()
