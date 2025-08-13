@@ -129,7 +129,7 @@ if __name__ == "__main__":
     try:
         readline.read_history_file(ctigor_histfile)
         readline.set_history_length(1000)
-    except:
+    except Exception:
         pass  # If loading histfile fails, just move along
 
     atexit.register(readline.write_history_file, ctigor_histfile)
